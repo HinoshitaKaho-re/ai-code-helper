@@ -17,4 +17,13 @@ class AiCodeHelperServiceTest {
         String result = aiCodeHelperService.chat("你好，我是程序员布朗尼");
         System.out.printf(result);
     }
+
+    @Test
+    void chatWithMemory() {
+        String result = aiCodeHelperService.chat("你好，我是程序员布朗尼");
+        System.out.printf(result);
+        //继续对话，验证会话记忆功能
+        String followUpResult = aiCodeHelperService.chat("你能记住我吗？");
+        System.out.printf(followUpResult);
+    }
 }
