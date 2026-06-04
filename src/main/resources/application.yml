@@ -3,9 +3,10 @@ spring:
     name: ai-code-helper
   profiles:
     active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
 langchain4j:
   community:
     dashscope:
       chat-model:
-        api-key: sk-c0d68a323a844b9d8ae24fc18fc45d2e
         model-name: qwen-plus
