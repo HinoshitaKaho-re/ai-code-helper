@@ -26,4 +26,10 @@ class AiCodeHelperServiceTest {
         String followUpResult = aiCodeHelperService.chat(1, "你能记住我吗？");
         System.out.printf(followUpResult);
     }
+
+    @Test
+    void chatForReport() {
+        AiCodeHelperService.Report result = aiCodeHelperService.chatForReport(2, "我是程序员布朗尼，请帮我写一份Java学习报告，内容包括：1. Java的核心特性；2. Java的应用场景；3. 学习Java的建议");
+        System.out.printf(result.toString());
+    }
 }
