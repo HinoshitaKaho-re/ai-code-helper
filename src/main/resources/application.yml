@@ -10,3 +10,5 @@ langchain4j:
     dashscope:
       chat-model:
         model-name: qwen-plus
+      embedding-model:
+        model-name : text-embedding-v4
