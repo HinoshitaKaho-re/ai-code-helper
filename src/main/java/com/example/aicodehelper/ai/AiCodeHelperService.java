@@ -1,6 +1,7 @@
 package com.example.aicodehelper.ai;
 
 import dev.langchain4j.service.MemoryId;
+import dev.langchain4j.service.Result;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
@@ -18,7 +19,10 @@ public interface AiCodeHelperService {
     @SystemMessage(fromResource = "system-prompt.txt")
     Report chatForReport(@MemoryId int memoryId, @UserMessage String userMessage);
 
-
     //定义返回值类型：学习报告  -  定义了数据结构（相当于一个只有字段、没有方法的简单 Java 类）
     record Report(String name, List<String> suggestionList) {};
+
+    //RAG返回封装后的结果
+    @SystemMessage(fromResource = "system-prompt.txt")
+    Result<String> chatWithRag(@MemoryId int memoryId, @UserMessage String userMessage);
 }

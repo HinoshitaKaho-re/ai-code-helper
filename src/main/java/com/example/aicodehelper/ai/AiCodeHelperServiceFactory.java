@@ -2,6 +2,7 @@ package com.example.aicodehelper.ai;
 
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,9 @@ public class AiCodeHelperServiceFactory {
     @Resource
     private PersistentChatMemoryStore persistentChatMemoryStore;
 
+    @Resource
+    private ContentRetriever contentRetriever;
+
     //AI Service的创建方法
     @Bean
     public AiCodeHelperService aiCodeHelperService() {
@@ -27,6 +31,7 @@ public class AiCodeHelperServiceFactory {
                         .maxMessages(10)
                         .chatMemoryStore(persistentChatMemoryStore)
                         .build())
+                .contentRetriever(contentRetriever)
                 .build();
     }
 
