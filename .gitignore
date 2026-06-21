@@ -1,6 +1,15 @@
 ### CUSTOM ###
 application-local.yml
 
+### Frontend ###
+frontend/node_modules/
+frontend/dist/
+frontend/.npm-cache/
+frontend/dev-server.log
+frontend/dev-server.err
+frontend/.env.local
+frontend/.env.*.local
+
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
