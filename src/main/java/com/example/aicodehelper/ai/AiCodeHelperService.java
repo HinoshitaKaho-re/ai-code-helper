@@ -7,6 +7,7 @@ import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.spring.AiService;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -28,4 +29,8 @@ public interface AiCodeHelperService {
     //RAG返回封装后的结果
     @SystemMessage(fromResource = "system-prompt.txt")
     Result<String> chatWithRag(@MemoryId int memoryId, @UserMessage String userMessage);
+
+    // 流式对话
+    @SystemMessage(fromResource = "system-prompt.txt")
+    Flux<String> chatStream(@MemoryId int memoryId, @UserMessage String userMessage);
 }
