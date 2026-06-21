@@ -53,4 +53,10 @@ class AiCodeHelperServiceTest {
         System.out.println(content);
         System.out.println(sources);
     }
+
+    @Test
+    void chatWithMCP() {
+        String result = aiCodeHelperService.chat(5, "编程导航网站里都有什么内容？");
+        System.out.printf(result);
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.aicodehelper.ai;
 
 import com.example.aicodehelper.ai.tools.InterviewQuestionTool;
+import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
@@ -21,6 +22,9 @@ public class AiCodeHelperServiceFactory {
     @Resource
     private ContentRetriever contentRetriever;
 
+    @Resource
+    private McpToolProvider mcpToolProvider;
+
     //AI Service的创建方法
     @Bean
     public AiCodeHelperService aiCodeHelperService() {
@@ -32,8 +36,9 @@ public class AiCodeHelperServiceFactory {
                         .maxMessages(10)
                         .chatMemoryStore(persistentChatMemoryStore)
                         .build())
-                .contentRetriever(contentRetriever)
+                .contentRetriever(contentRetriever) //RAG 检索增强生成
                 //.tools(new InterviewQuestionTool()) // 工具调用,爬虫爬的数据，为了防止封号就先注释掉
+                .toolProvider(mcpToolProvider) //MCP 工具调用
                 .build();
     }
 
