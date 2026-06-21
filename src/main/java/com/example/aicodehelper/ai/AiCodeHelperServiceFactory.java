@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class AiCodeHelperServiceFactory {
 
     @Resource
-    private ChatModel qwenChatModel;
+    private ChatModel myQwenChatModel;
 
     @Resource
     private PersistentChatMemoryStore persistentChatMemoryStore;
@@ -30,7 +30,7 @@ public class AiCodeHelperServiceFactory {
     public AiCodeHelperService aiCodeHelperService() {
         //建造者模式创建AI Service实例，指定接口和模型，同时注入持久化会话记忆
         return AiServices.builder(AiCodeHelperService.class)
-                .chatModel(qwenChatModel)
+                .chatModel(myQwenChatModel)
                 .chatMemoryProvider(memoryId -> MessageWindowChatMemory.builder()
                         .id(memoryId)
                         .maxMessages(10)
