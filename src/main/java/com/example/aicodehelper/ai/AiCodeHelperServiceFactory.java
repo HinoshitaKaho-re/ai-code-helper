@@ -1,5 +1,6 @@
 package com.example.aicodehelper.ai;
 
+import com.example.aicodehelper.ai.tools.InterviewQuestionTool;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
@@ -32,6 +33,7 @@ public class AiCodeHelperServiceFactory {
                         .chatMemoryStore(persistentChatMemoryStore)
                         .build())
                 .contentRetriever(contentRetriever)
+                //.tools(new InterviewQuestionTool()) // 工具调用,爬虫爬的数据，为了防止封号就先注释掉
                 .build();
     }
 
