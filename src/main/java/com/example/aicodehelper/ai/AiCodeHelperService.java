@@ -1,14 +1,17 @@
 package com.example.aicodehelper.ai;
 
+import com.example.aicodehelper.ai.guardrail.SafeInputGuardrail;
 import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.Result;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
+import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.spring.AiService;
 
 import java.util.List;
 
 //@AiService
+@InputGuardrails(SafeInputGuardrail.class)
 public interface AiCodeHelperService {
 
     //该注解可以直接指定文件，将内容读取出来作为提示词
